@@ -42,11 +42,12 @@
 	  <input type="text" id="role" name="role_add" required><br>
 	  <button type="submit">Добавить роль</button>
 	</form>
+
 	<form class="hide_n_seek" id="add_dolz" action="add_dolz.php" method="post">
 	  <label for="dolz">Название должности:</label><br>
 	  <input type="text" id="dolz" name="dolz_add" required><br>
-	  <label for="role_link">Выберите роль:</label><br>
-	  <select id="role_link" name="role_link">
+	  <label for="role_id">Выберите роль:</label><br>
+	  <select id="role_id" name="role_id">
 	  	<?php
 			$query = "SELECT id,name FROM role";
 			$res = pg_query($query);
@@ -57,7 +58,7 @@
 	  </select><br><br>
 	  <button type="submit">Добавить должность</button>
 	</form>
-	
+
 	<form class="hide_n_seek" id="add_user" action="add_user.php" method="post">
 	  <label for="user">Имя пользователя:</label><br>
 	  <input type="text" id="user" name="role_add" required><br>

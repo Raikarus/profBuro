@@ -12,7 +12,7 @@
 
 	$query = "SELECT id FROM role WHERE name='{$_POST['role_add']}'";
 	$res = pg_query($query);
-	if(pg_fetch_assoc($res))
+	if(pg_num_rows($res)>0)
 	{
 		header("Location: $path/admin.php");
 		exit();

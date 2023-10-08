@@ -60,16 +60,16 @@
 	</form>
 
 	<form class="hide_n_seek" id="add_user" action="add_user.php" method="post">
-	  <label for="user">Имя пользователя:</label><br>
-	  <input type="text" id="user" name="role_add" required><br>
+	  <label for="user_add">Имя пользователя:</label><br>
+	  <input type="text" id="user_add" name="user_add" required><br>
       <label for="birthdate">Дата рождения:</label><br>
-  	  <input type="date" id="birthdate" name="birthdate"><br>
+  	  <input type="date" id="birthdate" name="birthdate" required><br>
 	  <label for="login">Логин пользователя:</label><br>
 	  <input type="text" id="login" name="login" required><br>
 	  <label for="password">Пароль пользователя:</label><br>
 	  <input type="text" id="password" name="password" required><br>
-  	  <label for="dolz_link">Выберите должность:</label><br>
-	  <select id="dolz_link" name="dolz_link">
+  	  <label for="dolz_id">Выберите должность:</label><br>
+	  <select id="dolz_id" name="dolz_id">
 	  	<?php
 			$query = "SELECT id,name FROM dolz";
 			$res = pg_query($query);

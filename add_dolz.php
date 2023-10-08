@@ -12,7 +12,7 @@
 
 	$query = "SELECT id FROM dolz WHERE name='{$_POST['dolz_add']}'";
 	$res = pg_query($query);
-	if(pg_fetch_assoc($res))
+	if(pg_num_rows($res)>0)
 	{
 		header("Location: $path/admin.php");
 		exit();

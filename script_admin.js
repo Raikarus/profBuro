@@ -11,5 +11,16 @@ function show_all(){
 
 function add_role(){
 	$("#response").html("");
-	$("#add_role").fadeToggle(100);
+	$(".hide_n_seek").hide();
+	$("#add_role").fadeIn(100);
+}
+function add_dolz(){
+	$("#response").html("");
+	$(".hide_n_seek").hide();
+	$("#add_dolz").fadeIn(100);
+}
+function add_user(){
+	$("#response").html("");
+	$(".hide_n_seek").hide();
+	$("#add_user").fadeIn(100);
 }

@@ -127,6 +127,24 @@ input {
   box-sizing: border-box;
 }
 
-#add_role {
+.hide_n_seek
+{
   display: none;
+}
+
+select {
+  background-color: #f2f2f2;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  min-width: 200px;
+}
+
+option {
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
 }

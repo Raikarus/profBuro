@@ -10,7 +10,17 @@
 	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
 	$dbconn = pg_connect($conn);
 
+	$query = "SELECT id FROM role WHERE name='{$_POST['role_add']}'";
+	$res = pg_query($query);
+	if($res)
+	{
+		echo "<script>alert('{$_POST['role_add']} уже существует');</script>";
+		header("Location: $path/admin.php");
+		exit();
+	}
+
 	$query="INSERT INTO role(name) VALUES('".$_POST['role_add']."')";
 	$res = pg_query($query);
-	echo $res;
+	header("Location: $path/admin.php");
+	
 ?>

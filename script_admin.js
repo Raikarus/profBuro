@@ -5,22 +5,22 @@ function show_all(){
 		data: {action: 'show_all'},
 		success: function(response){
 			$("#response").html(response);
+			$(".hide_n_seek").hide();
+			$("#response").show();
 		}
 	});
 }
 
-function add_role(){
-	$("#response").html("");
-	$(".hide_n_seek").hide();
-	$("#add_role").fadeIn(100);
-}
-function add_dolz(){
-	$("#response").html("");
-	$(".hide_n_seek").hide();
-	$("#add_dolz").fadeIn(100);
-}
-function add_user(){
-	$("#response").html("");
-	$(".hide_n_seek").hide();
-	$("#add_user").fadeIn(100);
+let form_names = ['add_role','add_dolz','add_user','up_role','up_dolz','up_user'];
+function show_form(form_name){
+	$("#response").hide();
+	for(let form of form_names)
+	{
+		if(form!=form_name)
+		{
+			$(`#${form}`).hide();
+		}
+	}
+	$(`#${form_name}`).fadeToggle(100);
+
 }

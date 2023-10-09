@@ -28,12 +28,20 @@
 		</form>
 	</header>
 
-		<div class="tools">
+	<div class="tools">
   		<ul>
 	    	<li><a href="#" onclick="show_all()">Вывести всех</a></li>
-			<li><a href="#" onclick="add_role()">Добавить роль</a></li>
-			<li><a href="#" onclick="add_dolz()">Добавить должность</a></li>
-			<li><a href="#" onclick="add_user()">Добавить пользователя</a></li>
+			<li><a href="#" onclick="show_form('add_role')">Добавить роль</a></li>
+			<li><a href="#" onclick="show_form('add_dolz')">Добавить должность</a></li>
+			<li><a href="#" onclick="show_form('add_user')">Добавить пользователя</a></li>
+  		</ul>
+	</div>
+
+	<div class="tools">
+  		<ul>
+			<li><a href="#" onclick="show_form('up_role')">Изменить роль</a></li>
+			<li><a href="#" onclick="show_form('up_dolz')">Изменить должность</a></li>
+			<li><a href="#" onclick="show_form('up_user')">Изменить пользователя</a></li>
   		</ul>
 	</div>
 

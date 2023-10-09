@@ -15,6 +15,9 @@
 		case 'show_all':
 			$result = show_all();
 			break;
+		case 'show_role':
+			$result = show_role();
+			break;
 		default:
 			$result = 'Неизвестная ошибка';
 			break;
@@ -53,6 +56,30 @@
 				$return .= $user['login'];
 				$return .= "</td><td>";
 				$return .= $user['password'];
+				$return .= "</td><td>";
+				$return .= $user['role_name'];
+				$return .= "</td>";
+			$return .= "</tr>";
+		}
+		$return .= '</table>';
+		return $return;
+	}
+
+	function show_role(){
+		$query="SELECT dolz.name AS dolz_name,role.name AS role_name FROM role JOIN dolz ON role.id=role_id";
+		$res = pg_query($query);
+
+		$return = "<table>";
+			$return .= "<tr>";
+				$return .= "<th>";
+				$return .= "Должность:";
+				$return .= "</th><th>";
+				$return .= "Роль:</th>";
+			$return .= "</tr>";
+		while ($user = pg_fetch_assoc($res)) {
+			$return .= "<tr>";
+				$return .= "<td>";
+				$return .= $user['dolz_name'];
 				$return .= "</td><td>";
 				$return .= $user['role_name'];
 				$return .= "</td>";

@@ -30,7 +30,8 @@
 
 	<div class="tools">
   		<ul>
-	    	<li><a href="#" onclick="show_all()">Вывести всех</a></li>
+	    	<li><a href="#" onclick="show_all()">Вывести пользователей</a></li>
+	    	<li><a href="#" onclick="show_role()">Вывести роли</a></li>
 			<li><a href="#" onclick="show_form('add_role')">Добавить роль</a></li>
 			<li><a href="#" onclick="show_form('add_dolz')">Добавить должность</a></li>
 			<li><a href="#" onclick="show_form('add_user')">Добавить пользователя</a></li>
@@ -88,6 +89,38 @@
 	  </select><br><br>
 
 	  <button type="submit">Добавить пользователя</button>
+	</form>
+
+	<form class="hide_n_seek" id="up_role" action="up_role.php" method="post">
+	  <label for="role_up">Выберите роль:</label><br>
+	  <select id="role_up" name="role_up">
+	  	<?php
+			$query = "SELECT id,name FROM role";
+			$res = pg_query($query);
+			while($option = pg_fetch_assoc($res)){
+				echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
+			}
+	  	?>
+	  </select><br><br>
+	  <label for="role_newname">Новое название роли:</label><br>
+	  <input type="text" id="role_newname" name="role_newname" required><br>
+	  <button type="submit">Изменить роль</button>
+	</form>
+
+	<form class="hide_n_seek" id="up_dolz" action="up_dolz.php" method="post">
+	  <label for="dolz_up">Выберите роль:</label><br>
+	  <select id="dolz_up" name="dolz_up">
+	  	<?php
+			$query = "SELECT id,dolz FROM dolz";
+			$res = pg_query($query);
+			while($option = pg_fetch_assoc($res)){
+				echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
+			}
+	  	?>
+	  </select><br><br>
+	  <label for="role_newname">Новое название роли:</label><br>
+	  <input type="text" id="role_newname" name="role_newname" required><br>
+	  <button type="submit">Изменить роль</button>
 	</form>
 
 	<div id="response">

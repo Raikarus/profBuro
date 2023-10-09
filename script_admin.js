@@ -11,6 +11,19 @@ function show_all(){
 	});
 }
 
+function show_role(){
+	$.ajax({
+		url: 'ajax_admin.php',
+		type: 'POST',
+		data: {action: 'show_role'},
+		success: function(response){
+			$("#response").html(response);
+			$(".hide_n_seek").hide();
+			$("#response").show();
+		}
+	});
+}
+
 let form_names = ['add_role','add_dolz','add_user','up_role','up_dolz','up_user'];
 function show_form(form_name){
 	$("#response").hide();

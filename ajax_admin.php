@@ -12,10 +12,10 @@
 	$dbconn = pg_connect($conn);
 
 	switch ($action) {
-		case 'show_all':
-			$result = show_all();
+		case 'users':
+			$result = show_users();
 			break;
-		case 'show_role':
+		case 'role':
 			$result = show_role();
 			break;
 		default:
@@ -25,7 +25,7 @@
 
 	echo $result;
 
-	function show_all(){
+	function show_users(){
 		$query="SELECT full_name,dolz.name AS dolz_name,date_of_birth,login,password,role.name AS role_name FROM users JOIN secure_info ON users.id=secure_info.user_id JOIN dolz ON dolz_id=dolz.id JOIN role ON role_id=role.id";
 		$res = pg_query($query);
 

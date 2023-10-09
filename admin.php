@@ -30,8 +30,8 @@
 
 	<div class="tools">
   		<ul>
-	    	<li><a href="#" onclick="show_all()">Вывести пользователей</a></li>
-	    	<li><a href="#" onclick="show_role()">Вывести роли</a></li>
+	    	<li><a href="#" onclick="show_smth('users')">Вывести пользователей</a></li>
+	    	<li><a href="#" onclick="show_smth('role')">Вывести роли</a></li>
 			<li><a href="#" onclick="show_form('add_role')">Добавить роль</a></li>
 			<li><a href="#" onclick="show_form('add_dolz')">Добавить должность</a></li>
 			<li><a href="#" onclick="show_form('add_user')">Добавить пользователя</a></li>

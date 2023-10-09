@@ -1,21 +1,8 @@
-function show_all(){
+function show_smth(act){
 	$.ajax({
 		url: 'ajax_admin.php',
 		type: 'POST',
-		data: {action: 'show_all'},
-		success: function(response){
-			$("#response").html(response);
-			$(".hide_n_seek").hide();
-			$("#response").show();
-		}
-	});
-}
-
-function show_role(){
-	$.ajax({
-		url: 'ajax_admin.php',
-		type: 'POST',
-		data: {action: 'show_role'},
+		data: {action: act},
 		success: function(response){
 			$("#response").html(response);
 			$(".hide_n_seek").hide();

@@ -142,6 +142,40 @@
 	  <button type="submit">Изменить роль</button>
 	</form>
 
+	<form class="hide_n_seek" id="up_user" action="up_user.php" method="post">
+	  <label for="user_id_up">Выберите пользователя:</label><br>
+	  <select id="user_id_up" name="user_id_up">
+	  	<?php
+			$query = "SELECT user_id,full_name,nickname FROM users JOIN secure_info ON users.id=user_id";
+			$res = pg_query($query);
+			while($option = pg_fetch_assoc($res)){
+				echo "<option value=\"{$option['user_id']}\" data-nickname=\"{$option['nickname']}}\">{$option['full_name']}</option>";
+			}
+	  	?>
+	  </select><br><br>
+	  <label for="user_new_name">Новое ФИО:</label><br>
+	  <input type="text" id="user_new_name" name="user_new_name"><br>
+	  <label for="user_new_nickname">Новый ник:</label><br>
+	  <input type="text" id="user_new_nickname" name="user_new_nickname"><br>
+	  <label for="birthdate">Новая дата рождения:</label><br>
+  	  <input type="date" id="birthdate" name="birthdate"><br>
+	  <label for="user_new_login">Новый логин:</label><br>
+	  <input type="text" id="user_new_login" name="user_new_login"><br>
+	  <label for="user_new_password">Новый пароль:</label><br>
+	  <input type="text" id="user_new_password" name="user_new_password"><br>
+	  <label for="dolz_id_up">Выберите должность:</label><br>
+	  <select id="dolz_id_up" name="dolz_id_up">
+	  	<?php
+			$query = "SELECT id,name FROM dolz";
+			$res = pg_query($query);
+			while($option = pg_fetch_assoc($res)){
+				echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
+			}
+	  	?>
+	  </select><br><br>
+	  <button type="submit">Изменить пользователя</button>
+	</form>
+
 	<div id="response">
 		
 	</div>

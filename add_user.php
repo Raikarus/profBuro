@@ -6,7 +6,7 @@
 		header("Location: $path/logout.php");
 		exit();
 	}
-	echo '<form action="admin.php" method="POST"><button type="submit">Админ</button></form>';
+	echo '<form action="admin.php" method="POST"><button type="submit">Админ</button></form><br>';
 
 	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
 	$dbconn = pg_connect($conn);
@@ -18,7 +18,7 @@
 		echo "Такой пользователь уже есть";
 		exit();
 	}
-	$query = "SELECT user_id FROM secure_info WHERE login='{$_POST['login']}' || nickname='{$_POST['nickname']}'";
+	$query = "SELECT user_id FROM secure_info WHERE login='{$_POST['login']}' OR nickname='{$_POST['nickname']}'";
 	$res = pg_query($query);
 	if(pg_num_rows($res)>0)
 	{

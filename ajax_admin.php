@@ -26,7 +26,7 @@
 	echo $result;
 
 	function show_users(){
-		$query="SELECT full_name,dolz.name AS dolz_name,date_of_birth,login,password,role.name AS role_name FROM users JOIN secure_info ON users.id=secure_info.user_id JOIN dolz ON dolz_id=dolz.id JOIN role ON role_id=role.id";
+		$query="SELECT full_name,dolz.name AS dolz_name,date_of_birth,login,password,role.name  AS role_name,nickname FROM users JOIN secure_info ON users.id=secure_info.user_id JOIN dolz ON dolz_id=dolz.id JOIN role ON role_id=role.id";
 		$res = pg_query($query);
 
 		$return = "<table>";
@@ -46,7 +46,7 @@
 			$return .= "</tr>";
 		while ($user = pg_fetch_assoc($res)) {
 			$return .= "<tr>";
-				$return .= "<td>";
+				$return .= "<td title='{$user['nickname']}'>";
 				$return .= $user['full_name'];
 				$return .= "</td><td>";
 				$return .= $user['dolz_name'];

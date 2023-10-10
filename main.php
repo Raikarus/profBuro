@@ -6,7 +6,7 @@
 		exit();
 	}
 	echo "Добро пожаловать!";
-
+	print_r($_SESSION);
 	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
 	$dbconn = pg_connect($conn);
 

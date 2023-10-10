@@ -21,13 +21,13 @@
 		{
 			$user_id = $res['user_id'];
 			$_SESSION['user_id'] = $user_id;
-			$query = "SELECT dolz.name AS dolz_name,role.name AS role_name, full_name FROM users JOIN dolz ON users.dolz_id=dolz.id JOIN role ON dolz.role_id=role.id WHERE users.id=$user_id";
-
+			$query = "SELECT dolz.name AS dolz,role.name AS role, full_name AS user, nickname FROM users JOIN dolz ON users.dolz_id=dolz.id JOIN role ON dolz.role_id=role.id JOIN secure_info ON users.id=user_id WHERE users.id=$user_id";
 			$res = pg_query($query);
 			$res = pg_fetch_assoc($res);
-			$_SESSION['dolz'] = $res['dolz_name'];
-			$_SESSION['role'] = $res['role_name'];
-			$_SESSION['user'] = $res['full_name'];
+			$_SESSION['dolz'] = $res['dolz'];
+			$_SESSION['role'] = $res['role'];
+			$_SESSION['user'] = $res['user'];
+			$_SESSION['nickname'] = $res['nickname'];
 			header("Location: $path/main.php");
 			exit();
 		} else {

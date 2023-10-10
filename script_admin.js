@@ -24,3 +24,10 @@ function show_form(form_name){
 	$(`#${form_name}`).fadeToggle(100);
 
 }
+
+$("#dolz_id_up").change(function(){
+	$("#dolz_newname").val($("#dolz_id_up option:selected").text());
+});
+$(document).ready(function(){
+	$("#dolz_newname").val($("#dolz_id_up option:selected").text());
+});

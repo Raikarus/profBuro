@@ -108,18 +108,28 @@
 	</form>
 
 	<form class="hide_n_seek" id="up_dolz" action="up_dolz.php" method="post">
-	  <label for="dolz_up">Выберите роль:</label><br>
-	  <select id="dolz_up" name="dolz_up">
+	  <label for="dolz_id_up">Выберите должность:</label><br>
+	  <select id="dolz_id_up" name="dolz_id_up">
 	  	<?php
-			$query = "SELECT id,dolz FROM dolz";
+			$query = "SELECT id,name FROM dolz";
 			$res = pg_query($query);
 			while($option = pg_fetch_assoc($res)){
 				echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
 			}
 	  	?>
 	  </select><br><br>
-	  <label for="role_newname">Новое название роли:</label><br>
-	  <input type="text" id="role_newname" name="role_newname" required><br>
+	  <label for="dolz_newname">Новое название должности:</label><br>
+	  <input type="text" id="dolz_newname" name="dolz_newname" required><br>
+	  <label for="role_id_up">Новая роль:</label><br>
+	  <select id="role_id_up" name="role_id_up">
+	  	<?php
+			$query = "SELECT id,name FROM role";
+			$res = pg_query($query);
+			while($option = pg_fetch_assoc($res)){
+				echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
+			}
+	  	?>
+	  </select><br><br>
 	  <button type="submit">Изменить роль</button>
 	</form>
 

@@ -9,9 +9,7 @@
 
 	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
 	$dbconn = pg_connect($conn);
-	$query = "SELECT name FROM role WHERE id=".$_SESSION['role_id'];
-	$res = pg_query($query);
-	$_SESSION['role'] = pg_fetch_assoc($res)['name'];
+
 ?>
 <!DOCTYPE html>
 <html>

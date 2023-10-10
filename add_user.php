@@ -18,7 +18,7 @@
 		echo "Такой пользователь уже есть";
 		exit();
 	}
-	$query = "SELECT user_id FROM secure_info WHERE login='{$_POST['login']}'";
+	$query = "SELECT user_id FROM secure_info WHERE login='{$_POST['login']}' || nickname='{$_POST['nickname']}'";
 	$res = pg_query($query);
 	if(pg_num_rows($res)>0)
 	{
@@ -29,7 +29,7 @@
 	$query="INSERT INTO users(full_name,dolz_id) VALUES('{$_POST['user_add']}',{$_POST['dolz_id']})";
 	$res = pg_query($query);
 	$date = date($_POST['birthdate']);
-	$query="INSERT INTO secure_info(user_id,password,date_of_birth,login) SELECT id,'{$_POST['password']}','{$date}','{$_POST['login']}' FROM users WHERE full_name='{$_POST['user_add']}'";
+	$query="INSERT INTO secure_info(user_id,password,date_of_birth,login,nickname) SELECT id,'{$_POST['password']}','{$date}','{$_POST['login']}','{$_POST['nickname']}' FROM users WHERE full_name='{$_POST['user_add']}'";
 	$res = pg_query($query);
 	echo $query;
 	if($res)

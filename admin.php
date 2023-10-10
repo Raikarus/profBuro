@@ -23,6 +23,13 @@
 		<form action="main.php" method="POST">
 			<button type="submit">Главная</button>
 		</form>
+		<div class="welcome">
+  			<h1>Добро пожаловать, <span id="username">
+  				<?php
+  					echo $_SESSION['nickname'];
+  				?>
+  			</span>!</h1>
+		</div>
 		<form action="logout.php" method="POST">
 			<button type="submit">Выйти</button>
 		</form>
@@ -71,6 +78,8 @@
 	<form class="hide_n_seek" id="add_user" action="add_user.php" method="post">
 	  <label for="user_add">Имя пользователя:</label><br>
 	  <input type="text" id="user_add" name="user_add" required><br>
+	  <label for="nickname">Никнейм:</label><br>
+	  <input type="text" id="nickname" name="nickname" required><br>
       <label for="birthdate">Дата рождения:</label><br>
   	  <input type="date" id="birthdate" name="birthdate" required><br>
 	  <label for="login">Логин пользователя:</label><br>

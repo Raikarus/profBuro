@@ -11,7 +11,7 @@ function show_smth(act){
 	});
 }
 
-let form_names = ['add_role','add_dolz','add_user','up_role','up_dolz','up_user'];
+let form_names = ['add_role','add_dolz','add_user','up_role','up_dolz','up_user','del_role','del_dolz','del_user'];
 function show_form(form_name){
 	$("#response").hide();
 	for(let form of form_names)

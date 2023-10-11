@@ -53,6 +53,14 @@
   		</ul>
 	</div>
 
+	<div class="tools">
+  		<ul>
+			<li><a href="#" onclick="show_form('del_role')">Удалить роль</a></li>
+			<li><a href="#" onclick="show_form('del_dolz')">Удалить должность</a></li>
+			<li><a href="#" onclick="show_form('del_user')">Удалить пользователя</a></li>
+  		</ul>
+	</div>
+
 	<form class="hide_n_seek" id="add_role" action="add_role.php" method="post">
 	  <label for="role">Название роли:</label><br>
 	  <input type="text" id="role" name="role_add" required><br>
@@ -174,6 +182,48 @@
 	  	?>
 	  </select><br><br>
 	  <button type="submit">Изменить пользователя</button>
+	</form>
+
+	<form class="hide_n_seek" id="del_role" action="del_role.php" method="post">
+	  <label for="role_id_del">Выберите роль для удаления:</label><br>
+	  <select id="role_id_del" name="role_id_del">
+	  	<?php
+			$query = "SELECT id,name FROM role";
+			$res = pg_query($query);
+			while($option = pg_fetch_assoc($res)){
+				echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
+			}
+	  	?>
+	  </select><br><br>
+	  <button type="submit">Удалить роль</button>
+	</form>
+
+	<form class="hide_n_seek" id="del_dolz" action="del_dolz.php" method="post">
+	  <label for="dolz_id_del">Выберите должность для удаления:</label><br>
+	  <select id="dolz_id_del" name="dolz_id_del">
+	  	<?php
+			$query = "SELECT id,name FROM dolz";
+			$res = pg_query($query);
+			while($option = pg_fetch_assoc($res)){
+				echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
+			}
+	  	?>
+	  </select><br><br>
+	  <button type="submit">Удалить должность</button>
+	</form>
+
+	<form class="hide_n_seek" id="del_user" action="del_user.php" method="post">
+	  <label for="user_id_del">Выберите пользователя для удаления:</label><br>
+	  <select id="user_id_del" name="user_id_del">
+	  	<?php
+			$query = "SELECT id,full_name FROM users";
+			$res = pg_query($query);
+			while($option = pg_fetch_assoc($res)){
+				echo "<option value=\"{$option['id']}\">{$option['full_name']}</option>";
+			}
+	  	?>
+	  </select><br><br>
+	  <button type="submit">Удалить пользователя</button>
 	</form>
 
 	<div id="response">

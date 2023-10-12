@@ -63,18 +63,44 @@
 		  </div>
 		  <div class="grid gridday">
 			  <?php
-			  	for ($i=0; $i < 2; $i++) { 
+				$days = array('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота','Воскресенье');
+				$current_date = date('d-m-Y');
+				
+			  	for ($i=14; $i >= 0; $i--) { 
 			  ?>
-				  <div class="day">Понедельник</div>
-				  <div class="day">Вторник</div>
-				  <div class="day">Среда</div>
-				  <div class="day">Четверг</div>
-				  <div class="day">Пятница</div>
+				  <div class="day">
+				  	<?php
+						$date_i = date('d-m-Y', strtotime('-'.$i.' day'));
+						$day_of_week = date('N',strtotime('-'.$i.' day'));
+				  		echo "{$days[$day_of_week-1]}<br><i>{$date_i}</i>";
+				  	?>
+				  </div>
+
 			  <?php
+			  	}
+			  ?>
+
+			  <?php
+			  	$query = "SELECT full_name,shift_date,EXTRACT(DAY FROM AGE(NOW(), shift_date)) AS datedif,EXTRACT(HOUR FROM start_time) as start_hour,EXTRACT(HOUR FROM end_time) AS end_hour,notes FROM schedule JOIN users ON user_id=users.id WHERE shift_date >= NOW() - INTERVAL '14 days'";
+			  	$res = pg_query($query);
+			  	while($zap = pg_fetch_assoc($res)){
+			  		$grid_column_start = 14-$zap['datedif'];
+			  		$grid_row_start = $zap['start_hour']-7;
+			  		$grid_row_end = $zap['end_hour']-7;
+
+			  		echo "<div class='schedule_item' style='
+			  			grid-column-start: {$grid_column_start};
+			  			grid-row-start: {$grid_row_start};
+			  			grid-row-end: {$grid_row_end}
+			  		'>
+			  		{$zap['full_name']}</div>";
 			  	}
 			  ?>
 		  </div>
 		</div>
 	</div>
+	<?php
+		pg_close($dbconn);
+	?>
 </body>
 </html>

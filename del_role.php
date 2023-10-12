@@ -12,6 +12,6 @@
 
 	$query = "DELETE FROM role WHERE id='{$_POST['role_id_del']}'";
 	$res = pg_query($query);
-
+	pg_close($dbconn);
 	header("Location: $path/admin.php");
 ?>

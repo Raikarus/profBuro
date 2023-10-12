@@ -16,6 +16,7 @@
 	if(pg_num_rows($res)>0)
 	{
 		echo "Такой пользователь уже есть";
+		pg_close($dbconn);
 		exit();
 	}
 	$query = "SELECT user_id FROM secure_info WHERE login='{$_POST['login']}' OR nickname='{$_POST['nickname']}'";
@@ -23,6 +24,7 @@
 	if(pg_num_rows($res)>0)
 	{
 		echo "Логин занят";
+		pg_close($dbconn);
 		exit();
 	}
 
@@ -31,10 +33,13 @@
 	$date = date($_POST['birthdate']);
 	$query="INSERT INTO secure_info(user_id,password,date_of_birth,login,nickname) SELECT id,'{$_POST['password']}','{$date}','{$_POST['login']}','{$_POST['nickname']}' FROM users WHERE full_name='{$_POST['user_add']}'";
 	$res = pg_query($query);
+	pg_close($dbconn);
 	echo $query;
-	if($res)
-	{
-		echo "Добавлено";
+	if($res) {
+		echo "<br><b>Добавлено</b>";
+	}
+	else{
+		echo "<br><b>Ошибка</b>";
 	}
 	//header("Location: $path/admin.php");
 ?>

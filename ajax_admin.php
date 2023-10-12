@@ -22,7 +22,8 @@
 			$result = 'Неизвестная ошибка';
 			break;
 	}
-
+	
+	pg_close($dbconn);
 	echo $result;
 
 	function show_users(){

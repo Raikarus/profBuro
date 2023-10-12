@@ -66,13 +66,14 @@
 		$query="UPDATE secure_info SET {$query_secure_info} WHERE user_id={$_POST['user_id_up']}";
 		$res = pg_query($query);
 	}
-
+	pg_close($dbconn);
 	function check_query($query){
 		$res = pg_query($query);
 		if(pg_num_rows($res)>0)
 		{
 			echo $query."<br>Не работает";
 			//header("Location: $path/admin.php");
+			pg_close($dbconn);
 			exit();
 		}
 	}

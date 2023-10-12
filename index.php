@@ -3,8 +3,6 @@
 	
 	session_start();
 	
-	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
-	$dbconn = pg_connect($conn);
 	if(isset($_SESSION['user_id']))
 	{
 		header("Location: $path/main.php");
@@ -13,6 +11,9 @@
 	if(isset($_POST['lgn']) && isset($_POST['pwd'])) {
 		$login = $_POST['lgn'];
 		$password = $_POST['pwd'];
+
+		$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
+		$dbconn = pg_connect($conn);
 
 		$query = "SELECT user_id FROM secure_info WHERE login='$login' AND password='$password'";
 		$res = pg_query($query);
@@ -29,9 +30,11 @@
 			$_SESSION['user'] = $res['user'];
 			$_SESSION['nickname'] = $res['nickname'];
 			header("Location: $path/main.php");
+			pg_close($dbconn);
 			exit();
 		} else {
 			$error = "Неверный логин и/или пароль";
+			pg_close($dbconn);
 		}
 	}
 ?>

@@ -16,10 +16,12 @@
 	if(pg_num_rows($res)>0)
 	{
 		header("Location: $path/admin.php");
+		pg_close($dbconn);
 		exit();
 	}
 
 	$query="UPDATE role SET name='{$_POST['role_newname']}' WHERE id={$_POST['role_up']}";
 	$res = pg_query($query);
+	pg_close($dbconn);
 	header("Location: $path/admin.php");
 ?>

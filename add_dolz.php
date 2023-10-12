@@ -15,10 +15,12 @@
 	if(pg_num_rows($res)>0)
 	{
 		header("Location: $path/admin.php");
+		pg_close($dbconn);
 		exit();
 	}
 
 	$query="INSERT INTO dolz(name,role_id) VALUES('{$_POST['dolz_add']}',{$_POST['role_id']})";
 	$res = pg_query($query);
+	pg_close($dbconn);
 	header("Location: $path/admin.php");
 ?>

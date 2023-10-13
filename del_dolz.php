@@ -1,5 +1,7 @@
 <?php
 require_once 'config.php';
+require_once 'connect_database.php';
+
 	session_start();
 
 	if(!isset($_SESSION['role']) || $_SESSION['role']!='Администратор' || !isset($_POST['dolz_id_del'])){
@@ -7,8 +9,7 @@ require_once 'config.php';
 		exit();
 	}
 
-	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
-	$dbconn = pg_connect($conn);
+
 
 	$query = "DELETE FROM dolz WHERE id='{$_POST['dolz_id_del']}'";
 	$res = pg_query($query);

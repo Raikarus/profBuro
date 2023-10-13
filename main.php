@@ -1,13 +1,11 @@
 <?php
 	require_once 'config.php';
+	require_once 'connect_database.php';
 	session_start();
 	if(!isset($_SESSION['user_id'])){
 		header("Location: $path/index.php");
 		exit();
 	}
-	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
-	$dbconn = pg_connect($conn);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,9 +82,9 @@
 			  	$query = "SELECT full_name,shift_date,EXTRACT(DAY FROM AGE(NOW(), shift_date)) AS datedif,EXTRACT(HOUR FROM start_time) as start_hour,EXTRACT(HOUR FROM end_time) AS end_hour,notes FROM schedule JOIN users ON user_id=users.id WHERE shift_date >= NOW() - INTERVAL '14 days'";
 			  	$res = pg_query($query);
 			  	while($zap = pg_fetch_assoc($res)){
-			  		$grid_column_start = 14-$zap['datedif'];
+			  		$grid_column_start = 15-$zap['datedif'];
 			  		$grid_row_start = $zap['start_hour']-7;
-			  		$grid_row_end = $zap['end_hour']-7;
+			  		$grid_row_end = $zap['end_hour']-6;
 
 			  		echo "<div class='schedule_item' style='
 			  			grid-column-start: {$grid_column_start};

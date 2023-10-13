@@ -1,5 +1,6 @@
 <?php
 	require_once 'config.php';
+	require_once 'connect_database.php';
 	session_start();
 
 	if(!isset($_SESSION['role']) || $_SESSION['role']!='Администратор' || !isset($_POST['action'])){
@@ -8,8 +9,6 @@
 	}
 
 	$action = $_POST['action'];
-	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
-	$dbconn = pg_connect($conn);
 
 	switch ($action) {
 		case 'users':

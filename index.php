@@ -1,5 +1,6 @@
 <?php 
 	require_once 'config.php';
+	require_once 'connect_database.php';
 	
 	session_start();
 	
@@ -12,9 +13,10 @@
 		$login = $_POST['lgn'];
 		$password = $_POST['pwd'];
 
-		$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
-		$dbconn = pg_connect($conn);
-
+		if(!$dbconn){
+			echo "<br>Ошибка подключения к базе</br>";
+			exit();
+		}
 		$query = "SELECT user_id FROM secure_info WHERE login='$login' AND password='$password'";
 		$res = pg_query($query);
 		$res = pg_fetch_assoc($res);

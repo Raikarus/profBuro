@@ -1,5 +1,6 @@
 <?php 
 	require_once 'config.php';
+	require_once 'connect_database.php';
 	session_start(); // начало сессии
 
 	// удаление всех переменных сессии

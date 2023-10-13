@@ -1,5 +1,6 @@
 <?php
 	require_once 'config.php';
+	require_once 'connect_database.php';
 	session_start();
 
 	if(!isset($_SESSION['role']) || $_SESSION['role']!='Администратор' || !isset($_POST['user_add'])){
@@ -7,9 +8,6 @@
 		exit();
 	}
 	echo '<form action="admin.php" method="POST"><button type="submit">Админ</button></form><br>';
-
-	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
-	$dbconn = pg_connect($conn);
 
 	$query = "SELECT id FROM users WHERE full_name='{$_POST['user_add']}'";
 	$res = pg_query($query);

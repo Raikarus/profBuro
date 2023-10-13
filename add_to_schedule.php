@@ -1,14 +1,12 @@
 <?php
 	require_once 'config.php';
+	require_once 'connect_database.php';
 	session_start();
 
 	if(!isset($_SESSION['user_id']) || !isset($_POST['shift_date'])){
 		header("Location: $path/logout.php");
 		exit();
 	}
-
-	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
-	$dbconn = pg_connect($conn);
 
 	$shift_date = date($_POST['shift_date']);
 	$start_time = date('H:i:s', strtotime($_POST['start_time']));

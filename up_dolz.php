@@ -1,6 +1,8 @@
 <?php
 
 	require_once 'config.php';
+	require_once 'connect_database.php';
+	
 	session_start();
 
 	if(!isset($_SESSION['role']) || $_SESSION['role']!='Администратор' || !isset($_POST['dolz_newname'])){
@@ -8,9 +10,7 @@
 		exit();
 	}
 
-	$conn = "hostaddr=$host port=5432 dbname=$dbname user=$user password=$password";
-	$dbconn = pg_connect($conn);
-
+	
 	$query = "SELECT id FROM dolz WHERE name='{$_POST['dolz_newname']}'";
 	$res = pg_query($query);
 

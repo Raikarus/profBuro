@@ -142,5 +142,5 @@ button[type="submit"]:hover {
   border: 1px solid black;
   border-radius: 3px;
   background-color: #eee;
-  align-items: center;
+  align-items: baseline;
 }

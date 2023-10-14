@@ -12,7 +12,9 @@
 	$start_time = date('H:i:s', strtotime($_POST['start_time']));
 	$end_time = date('H:i:s', strtotime($_POST['end_time']));
 
-	$query = "INSERT INTO schedule(user_id,shift_date,start_time,end_time,notes) VALUES({$_SESSION['user_id']},'{$shift_date}','{$start_time}','{$end_time}','{$_POST['notes']}')";
+	$diff_minutes = floor((strtotime($_POST['end_time'])-strtotime($_POST['start_time']))/60);
+
+	$query = "INSERT INTO schedule(user_id,shift_date,start_time,end_time,notes,total_time_min) VALUES({$_SESSION['user_id']},'{$shift_date}','{$start_time}','{$end_time}','{$_POST['notes']}',{$diff_minutes})";
 	echo $query;
 
 	$res = pg_query($query);

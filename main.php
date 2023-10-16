@@ -128,8 +128,13 @@
 		</div>
 	</div>
 	<?php
+		
 		$query = "SELECT * FROM schedule WHERE user_id={$_SESSION['user_id']}";
+		if ($_SESSION['role']!="Пользователь") {
+			$query = "SELECT * FROM schedule";
+		}
 		$res = pg_query($query);
+
 		while ($zap = pg_fetch_assoc($res)) {
 			echo "<form action='delete_schedule.php' method='POST'>Дата: {$zap['shift_date']}. Время: {$zap['start_time']} - {$zap['end_time']}<input name='schedule_id' type='hidden' value='{$zap['id']}'><input type='submit' value='Удалить'></form>";
 		}

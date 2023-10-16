@@ -4,7 +4,9 @@
 	require_once 'connect_database.php';
 	echo $_POST['schedule_id'];
 	
-	$query = "DELETE FROM schedule WHERE id = {$_POST['schedule_id']}";
+	
+	$id = $_POST['schedule_id'];
+	$query = "DELETE FROM schedule WHERE id = {$_POST['id']}";
 	$res = pg_query($query);
 	header("Location: $path/main.php");
 ?>

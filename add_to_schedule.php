@@ -15,8 +15,9 @@
 	$diff_minutes = floor((strtotime($_POST['end_time'])-strtotime($_POST['start_time']))/60);
 
 	$query = "INSERT INTO schedule(user_id,shift_date,start_time,end_time,notes,total_time_min) VALUES({$_SESSION['user_id']},'{$shift_date}','{$start_time}','{$end_time}','{$_POST['notes']}',{$diff_minutes})";
-	echo $query;
-
+	if($_SESSION['role']!='Пользователь'){
+		$query = "INSERT INTO schedule(user_id,shift_date,start_time,end_time,notes,total_time_min) VALUES({$_POST['user_id']},'{$shift_date}','{$start_time}','{$end_time}','{$_POST['notes']}',{$diff_minutes})";
+	}
 	$res = pg_query($query);
 
 	if($res) {

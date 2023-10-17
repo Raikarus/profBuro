@@ -37,6 +37,21 @@
 
 	<div class="flex_between">
 		<form id="add_to_schedule" action="add_to_schedule.php" method="POST">
+			<?php
+			if ($_SESSION['role']!="Пользователь") {
+				?>
+				<select id="user_id" name="user_id">
+			  	<?php
+					$query = "SELECT id,full_name FROM users";
+					$res = pg_query($query);
+					while($option = pg_fetch_assoc($res)){
+						echo "<option value=\"{$option['id']}\">{$option['full_name']}</option>";
+					}
+			  	?>
+			  </select><br><br>
+			<?php
+			}
+			?>
 			<label for="shift_date">Дата дежурства:</label><br>
 				<input type="date" id="shift_date" name="shift_date" required><br>
 			<label for="start_time">Начало дежурства:</label><br>
@@ -136,7 +151,9 @@
 		$res = pg_query($query);
 
 		while ($zap = pg_fetch_assoc($res)) {
-			echo "<form action='delete_schedule.php' method='POST'>Дата: {$zap['shift_date']}. Время: {$zap['start_time']} - {$zap['end_time']}<input name='schedule_id' type='hidden' value='{$zap['id']}'><input type='submit' value='Удалить'></form>";
+			$query2 = "SELECT full_name FROM users WHERE id={$zap['user_id']}";
+			$username = pg_fetch_assoc(pg_query($query2))['full_name'];
+			echo "<form action='delete_schedule.php' method='POST'>Пользователь: <b>{$username}</b>. Дата: <b>{$zap['shift_date']}</b>. Время: <b>{$zap['start_time']} - {$zap['end_time']}</b><input name='schedule_id' type='hidden' value='{$zap['id']}'><input type='submit' value='Удалить'></form>";
 		}
 		pg_close($dbconn);
 	?>

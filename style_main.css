@@ -76,6 +76,20 @@ button[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
+header button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+header button:hover {
+  background-color: #3e8e41;
+}
+
 .schedule {
   width: 70%;
   padding-top: 15px;

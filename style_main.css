@@ -76,7 +76,7 @@ button[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
-header button {
+header a button {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
@@ -86,7 +86,7 @@ header button {
   margin-top: 10px;
 }
 
-header button:hover {
+header a button:hover {
   background-color: #3e8e41;
 }
 

@@ -1,5 +1,7 @@
 <div class="flex_between">
-		<form id="add_to_schedule" action="add_to_schedule.php" method="POST">
+		<form id="add_to_schedule" action=<?php
+				echo "{$path}/add_to_schedule.php";
+			?> method="POST">
 			<?php
 			if ($_SESSION['role']!="Пользователь") {
 				?>

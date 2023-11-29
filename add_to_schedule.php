@@ -27,5 +27,5 @@
 		echo "<br><b>Ошибка</b>";
 	}
 	pg_close($dbconn);
-	header("Location: $path/main.php")
+	header("Location: $path/main.php/?page=schedule")
 ?>

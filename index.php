@@ -52,14 +52,13 @@
 
 <body>
 	<div id="access_form" >
+		<img src="img/logo.jpg">
 		<form method="POST">
-			<div>
+			<div id="header">Профбюро студентов МФ МГТУ им. Н.Э. Баумана</div>
 				<label for="lgn">Логин:</label>
 				<input type="text" name="lgn" required>
-			</div>	<div>
 				<label for="pwd">Пароль:</label>
 				<input type="password" name="pwd" required>
-			</div>
 			<input type="submit" value="Войти">
 		</form>
 	</div>

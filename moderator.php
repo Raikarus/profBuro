@@ -12,6 +12,6 @@
 		while ($zap = pg_fetch_assoc($res)) {
 			$query2 = "SELECT full_name FROM users WHERE id={$zap['user_id']}";
 			$username = pg_fetch_assoc(pg_query($query2))['full_name'];
-			echo "<form action='delete_schedule.php' method='POST'>Пользователь: <b>{$username}</b>. Дата: <b>{$zap['shift_date']}</b>. Время: <b>{$zap['start_time']} - {$zap['end_time']}</b><input name='schedule_id' type='hidden' value='{$zap['id']}'><input type='submit' value='Удалить'></form>";
+			echo "<form action='{$path}./delete_schedule.php' method='POST'>Пользователь: <b>{$username}</b>. Дата: <b>{$zap['shift_date']}</b>. Время: <b>{$zap['start_time']} - {$zap['end_time']}</b><input name='schedule_id' type='hidden' value='{$zap['id']}'><input type='submit' value='Удалить'></form>";
 		}
 ?>

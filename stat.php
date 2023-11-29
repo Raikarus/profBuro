@@ -6,5 +6,5 @@
 	while ($zap = pg_fetch_assoc($res)) {
 		echo "<tr><td>{$zap['full_name']}</td><td>{$zap['total']}</td></tr>";
 		}
-	echo "</table>";	
+	echo "</table>";
 ?>

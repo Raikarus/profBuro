@@ -13,7 +13,7 @@
 	<title>Главная</title>
 	<link rel="stylesheet" type="text/css" href=
 	<?php
-		echo '"'.$path."/style_main.css".'"';
+		echo "{$path}/style_main.css";
 	?>
 	>
 </head>
@@ -30,7 +30,7 @@
 		?>
 			<form action=
 			<?php
-				echo '"'.$path."/admin.php".'"';
+				echo "{$path}/admin.php";
 			?> method="POST">
 				<button type="submit">Админ</button>
 			</form>
@@ -40,7 +40,7 @@
 		?>
 			<a href=
 			<?php
-				echo '"'.$path."/main.php/?page=moderator".'"';
+				echo "{$path}/main.php/?page=moderator";
 			?>
 			><button>Модератор</button></a>
 		<?php
@@ -48,16 +48,16 @@
 		?>
 		<a href=
 			<?php
-				echo '"'.$path."/main.php/?page=schedule".'"';
+				echo "{$path}/main.php/?page=schedule";
 			?>
 		><button>Расписание</button></a>
 		<a href=
 			<?php
-				echo '"'.$path."/main.php/?page=stat".'"';
+				echo "{$path}/main.php/?page=stat";
 			?>
 		><button>Статистика</button></a>
 		<form action=<?php
-				echo '"'.$path."/logout.php".'"';
+				echo "{$path}/logout.php";
 			?> method="POST">
 			<button type="submit">Выйти</button>
 		</form>

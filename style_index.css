@@ -89,6 +89,22 @@ input[type="submit"]:hover {
 	margin-bottom: 20px;
 }
 
-@media and (max-width: 900px){
-
+@media screen and (max-width: 900px){
+	img{
+		width: 50%;
+		height: auto;
+	}
+	#access_form
+	{
+		flex-direction: column;
+		height: 99vh;
+	}
+	body
+	{
+		font-size:6vh;
+	}
+	#error
+	{
+		font-size: 2vh;
+	}
 }

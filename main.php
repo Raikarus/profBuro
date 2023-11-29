@@ -51,6 +51,11 @@
 				echo '"'.$path."/main.php/?page=schedule".'"';
 			?>
 		><button>Расписание</button></a>
+		<a href=
+			<?php
+				echo '"'.$path."/main.php/?page=stat".'"';
+			?>
+		><button>Статистика</button></a>
 		<form action=<?php
 				echo '"'.$path."/logout.php".'"';
 			?> method="POST">
@@ -68,6 +73,10 @@
 			case 'moderator':
 				include('moderator.php');
 				break;
+
+			case 'stat':
+			include('stat.php');
+			break;
 
 			default:
 				include('schedule.php');

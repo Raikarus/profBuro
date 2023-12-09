@@ -3,11 +3,10 @@
 	require_once 'connect_database.php';
 	session_start();
 
-	if(!isset($_SESSION['role']) || $_SESSION['role']!='Администратор' || !isset($_POST['user_id_up'])){
+	if(!isset($_SESSION['role']) || !isset($_POST['user_id_up'])){
 		header("Location: $path/logout.php");
 		exit();
 	}
-	echo '<form action="admin.php" method="POST"><button type="submit">Админ</button></form><br>';
 
 	$query_users = "";
 	$query_secure_info = "";
@@ -53,7 +52,7 @@
 		if(strlen($query_users)!=0){
 			$query_users .= ", ";
 		}
-		$query_users .= "name='{$_POST['user_new_name']}' ";
+		$query_users .= "full_name='{$_POST['user_new_name']}' ";
 	}
 
 	if(strlen($query_users)!=0) {
@@ -64,7 +63,18 @@
 		$query="UPDATE secure_info SET {$query_secure_info} WHERE user_id={$_POST['user_id_up']}";
 		$res = pg_query($query);
 	}
+
+	if($_SESSION['role']=="Администратор")
+	{
+		header("Location: $path/admin.php");
+	}
+	else
+	{
+		header("Location: $path/main.php");	
+	}
 	pg_close($dbconn);
+
+
 	function check_query($query){
 		$res = pg_query($query);
 		if(pg_num_rows($res)>0)

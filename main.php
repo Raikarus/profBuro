@@ -37,11 +37,16 @@
 		<?php
 		}
 		?>
-			<a href=
+		<a href=
 			<?php
-				echo "{$path}/main.php/?page=moderator";
+				echo "{$path}/main.php/?page=profil";
 			?>
-			><button>Мои записи</button></a>
+		><button>Профиль</button></a>
+		<a href=
+		<?php
+			echo "{$path}/main.php/?page=moderator";
+		?>
+		><button>Мои записи</button></a>
 		<a href=
 			<?php
 				echo "{$path}/main.php/?page=schedule";
@@ -59,7 +64,7 @@
 		</form>
 	</header>
 
-
+	<div id="main_body">
 	<?php
 		switch ($_GET['page']) {
 			case 'schedule':
@@ -74,17 +79,17 @@
 			include('stat.php');
 			break;
 
-			case 'mystat':
-			include('mystat.php');
+			case 'profil':
+			include('profil.php');
 			break;
 
 			default:
 				include('schedule.php');
 				break;
 		}
-		
-
 		pg_close($dbconn);
 	?>
+	</div>
+	
 </body>
 </html>

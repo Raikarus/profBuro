@@ -12,4 +12,5 @@
 			$username = pg_fetch_assoc(pg_query($query2))['full_name'];
 			echo "<form action='{$path}/delete_schedule.php' method='POST'><tr><td>{$username}</td><td>{$zap['shift_date']}</td><td>{$zap['start_time']} - {$zap['end_time']}</td><td><input name='schedule_id' type='hidden' value='{$zap['id']}'><input type='submit' value='Удалить'></td></tr></form>";
 		}
+	echo "</table>";
 ?>

@@ -18,7 +18,9 @@
 </head>
 <body>
 	<header>
-		<form action="main.php" method="POST">
+		<form action=<?php
+				echo "{$path}/main.php";
+			?> method="POST">
 			<button type="submit">Главная</button>
 		</form>
 		<div class="welcome">
@@ -28,7 +30,9 @@
   				?>
   			</span>!</h1>
 		</div>
-		<form action="logout.php" method="POST">
+		<form action=<?php
+				echo "{$path}/logout.php";
+			?> method="POST">
 			<button type="submit">Выйти</button>
 		</form>
 	</header>
@@ -59,13 +63,17 @@
   		</ul>
 	</div>
 
-	<form class="hide_n_seek" id="add_role" action="add_role.php" method="post">
+	<form class="hide_n_seek" id="add_role" action=<?php
+				echo "{$path}/add_role.php";
+			?> method="post">
 	  <label for="role">Название роли:</label><br>
 	  <input type="text" id="role" name="role_add" required><br>
 	  <button type="submit">Добавить роль</button>
 	</form>
 
-	<form class="hide_n_seek" id="add_dolz" action="add_dolz.php" method="post">
+	<form class="hide_n_seek" id="add_dolz" action=<?php
+				echo "{$path}/add_dolz.php";
+			?> method="post">
 	  <label for="dolz">Название должности:</label><br>
 	  <input type="text" id="dolz" name="dolz_add" required><br>
 	  <label for="role_id">Выберите роль:</label><br>
@@ -81,7 +89,9 @@
 	  <button type="submit">Добавить должность</button>
 	</form>
 
-	<form class="hide_n_seek" id="add_user" action="add_user.php" method="post">
+	<form class="hide_n_seek" id="add_user" action=<?php
+				echo "{$path}/add_user.php";
+			?> method="post">
 	  <label for="user_add">Имя пользователя:</label><br>
 	  <input type="text" id="user_add" name="user_add" required><br>
 	  <label for="nickname">Никнейм:</label><br>
@@ -106,7 +116,9 @@
 	  <button type="submit">Добавить пользователя</button>
 	</form>
 
-	<form class="hide_n_seek" id="up_role" action="up_role.php" method="post">
+	<form class="hide_n_seek" id="up_role" action=<?php
+				echo "{$path}/up_role.php";
+			?> method="post">
 	  <label for="role_up">Выберите роль:</label><br>
 	  <select id="role_up" name="role_up">
 	  	<?php
@@ -122,7 +134,9 @@
 	  <button type="submit">Изменить роль</button>
 	</form>
 
-	<form class="hide_n_seek" id="up_dolz" action="up_dolz.php" method="post">
+	<form class="hide_n_seek" id="up_dolz" action=<?php
+				echo "{$path}/up_dolz.php";
+			?> method="post">
 	  <label for="dolz_id_up">Выберите должность:</label><br>
 	  <select id="dolz_id_up" name="dolz_id_up">
 	  	<?php
@@ -148,7 +162,9 @@
 	  <button type="submit">Изменить роль</button>
 	</form>
 
-	<form class="hide_n_seek" id="up_user" action="up_user.php" method="post">
+	<form class="hide_n_seek" id="up_user" action=<?php
+				echo "{$path}/up_user.php";
+			?> method="post">
 	  <label for="user_id_up">Выберите пользователя:</label><br>
 	  <select id="user_id_up" name="user_id_up">
 	  	<?php
@@ -182,7 +198,9 @@
 	  <button type="submit">Изменить пользователя</button>
 	</form>
 
-	<form class="hide_n_seek" id="del_role" action="del_role.php" method="post">
+	<form class="hide_n_seek" id="del_role" action=<?php
+				echo "{$path}/del_role.php";
+			?>" method="post">
 	  <label for="role_id_del">Выберите роль для удаления:</label><br>
 	  <select id="role_id_del" name="role_id_del">
 	  	<?php
@@ -196,7 +214,9 @@
 	  <button type="submit">Удалить роль</button>
 	</form>
 
-	<form class="hide_n_seek" id="del_dolz" action="del_dolz.php" method="post">
+	<form class="hide_n_seek" id="del_dolz" action=<?php
+				echo "{$path}/del_dolz.php";
+			?> method="post">
 	  <label for="dolz_id_del">Выберите должность для удаления:</label><br>
 	  <select id="dolz_id_del" name="dolz_id_del">
 	  	<?php
@@ -210,7 +230,9 @@
 	  <button type="submit">Удалить должность</button>
 	</form>
 
-	<form class="hide_n_seek" id="del_user" action="del_user.php" method="post">
+	<form class="hide_n_seek" id="del_user" action=<?php
+				echo "{$path}/del_user.php";
+			?> method="post">
 	  <label for="user_id_del">Выберите пользователя для удаления:</label><br>
 	  <select id="user_id_del" name="user_id_del">
 	  	<?php

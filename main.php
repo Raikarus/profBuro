@@ -42,7 +42,7 @@
 			<?php
 				echo "{$path}/main.php/?page=moderator";
 			?>
-			><button>Модератор</button></a>
+			><button>Мои записи</button></a>
 		<?php
 		}
 		?>
@@ -76,6 +76,10 @@
 
 			case 'stat':
 			include('stat.php');
+			break;
+
+			case 'mystat':
+			include('mystat.php');
 			break;
 
 			default:

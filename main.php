@@ -36,16 +36,12 @@
 			</form>
 		<?php
 		}
-		if($_SESSION['role']!="Пользователь"){
 		?>
 			<a href=
 			<?php
 				echo "{$path}/main.php/?page=moderator";
 			?>
 			><button>Мои записи</button></a>
-		<?php
-		}
-		?>
 		<a href=
 			<?php
 				echo "{$path}/main.php/?page=schedule";
